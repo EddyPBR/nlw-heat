@@ -1,0 +1,13 @@
+{
+  "name": "nlw-heat-api",
+  "version": "0.0.1",
+  "description": "Project developed in nlw-heat event by Rocketseat",
+  "main": "index.js",
+  "repository": "https://github.com/EddyPBR/nlw-heat",
+  "author": "EddyPBR",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
