@@ -1,11 +1,9 @@
 import { Router } from "express";
 
-import { HelloWorldController } from "@controllers/HelloWorldController";
-
-const helloWorld = new HelloWorldController();
+import { AuthenticateUserController } from "@controllers/AuthenticateUserController";
 
 const router = Router();
 
-router.get("/", helloWorld.index);
+router.post("/authenticate", new AuthenticateUserController().handle);
 
 export { router };
