@@ -16,7 +16,9 @@
       {
         "alias": {
           "@controllers": "./src/controllers",
-          "@models": "./src/models"
+          "@models": "./src/models",
+          "@exceptions": "./src/exceptions",
+          "@middlewares": "./src/middlewares"
         }
       }
     ]
