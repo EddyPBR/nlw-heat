@@ -18,7 +18,8 @@
           "@controllers": "./src/controllers",
           "@models": "./src/models",
           "@exceptions": "./src/exceptions",
-          "@middlewares": "./src/middlewares"
+          "@middlewares": "./src/middlewares",
+          "@services": "./src/services"
         }
       }
     ]
