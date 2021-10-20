@@ -28,13 +28,13 @@ class AuthenticateUserService {
       }
     });
 
-    const { data: UserDataResponse } = await axios.get<IUserResponse>("https://api.github.com/user", {
+    const { data: userDataResponse } = await axios.get<IUserResponse>("https://api.github.com/user", {
       headers: {
         authorization: `Bearer ${accessTokenResponse.access_token}`
       }
     });
 
-    const { login, id, avatar_url, name } = UserDataResponse;
+    const { login, id, avatar_url, name } = userDataResponse;
     
     let user = await prismaClient.user.findFirst({
       where: {
