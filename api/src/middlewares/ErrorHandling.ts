@@ -15,11 +15,22 @@ export function ErrorHandling (
   }
 
   if(isCelebrateError(err)) {
-    const errorDetail = err.details.get("body").details[0];
-    const formatedError = errorDetail.message.replace(/"/g, "");
+    let errorMessage = "";
 
+    if(err.details?.get("body")) {
+      errorMessage = err.details.get("body").details[0].message;
+    } else if (err.details?.get("query")) {
+      errorMessage = err.details.get("query").details[0].message;
+    } else if (err.details?.get("headers")) {
+      errorMessage = err.details.get("headers").details[0].message;
+    } else {
+      errorMessage = "Request unexpected error";
+    }
+
+    const formatedErrorMessage = errorMessage.replace(/"/g, "");
+    
     return response.status(400).json({
-      message: formatedError,
+      message: formatedErrorMessage,
     });
   }
 
