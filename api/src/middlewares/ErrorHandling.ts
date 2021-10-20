@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import { ApplicationException } from "@exceptions/ApplicationException";
 import axios from "axios";
 import { Prisma } from "@prisma/client";
+import { isCelebrateError } from "celebrate";
 
 export function ErrorHandling (
   err: Error,
@@ -11,6 +12,15 @@ export function ErrorHandling (
 ) {
   if (err instanceof ApplicationException) {
     return response.status(err.statusCode).json({ message: err.message });
+  }
+
+  if(isCelebrateError(err)) {
+    const errorDetail = err.details.get("body").details[0];
+    const formatedError = errorDetail.message.replace(/"/g, "");
+
+    return response.status(400).json({
+      message: formatedError,
+    });
   }
 
   if(axios.isAxiosError(err)) {

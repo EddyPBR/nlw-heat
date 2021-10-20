@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { celebrate, Joi } from "celebrate";
 
 import { EnsureAuthenticated } from "@middlewares/EnsureAuthenticated";
 
@@ -21,9 +22,17 @@ router.get("/signin/callback", (request, response) => {
   return response.status(200).json(code);
 });
 
-router.post("/authenticate", new AuthenticateUserController().handle);
+router.post("/authenticate", celebrate({
+  body: {
+    code: Joi.string().required()
+  }
+}),new AuthenticateUserController().handle);
 
-router.post("/messages", EnsureAuthenticated, new CreateMessageController().handle);
+router.post("/messages", celebrate({
+  body: {
+    message: Joi.string().required()
+  }
+}),EnsureAuthenticated, new CreateMessageController().handle);
 
 router.get("/messages/last3", new GetLast3MessagesController().handle);
 
