@@ -1,4 +1,6 @@
 import express from "express";
+import http from "http";
+import { Server } from "socket.io";
 import "express-async-errors";
 import { ErrorHandling } from "@middlewares/ErrorHandling";
 import { router } from "./routes";
@@ -11,4 +13,16 @@ app.use(router);
 
 app.use(ErrorHandling);
 
-export { app };
+const serverHttp = http.createServer(app);
+
+const io = new Server(serverHttp, {
+  cors: {
+    origin: "*"
+  }
+});
+
+io.on("connection", socket => {
+  console.log(`User connected on socket ${socket.id}`);
+});
+
+export { serverHttp, io };
