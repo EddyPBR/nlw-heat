@@ -11,33 +11,33 @@ import { GetMessagesController } from "@controllers/GetMessagesController";
 const router = Router();
 
 router.get("/github", (request, response) => {
-  response.redirect(
-    `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
-  );
+	response.redirect(
+		`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
+	);
 });
 
 router.get("/signin/callback", (request, response) => {
-  const { code } = request.query;
+	const { code } = request.query;
 
-  return response.status(200).json(code);
+	return response.status(200).json(code);
 });
 
 router.post("/authenticate", celebrate({
-  body: {
-    code: Joi.string().required()
-  }
+	body: {
+		code: Joi.string().required()
+	}
 }),new AuthenticateUserController().handle);
 
 router.post("/messages", celebrate({
-  body: {
-    message: Joi.string().required()
-  }
+	body: {
+		message: Joi.string().required()
+	}
 }),EnsureAuthenticated, new CreateMessageController().handle);
 
 router.get("/messages", celebrate({
-  query: {
-    limit: Joi.number().min(1).max(25)
-  }
+	query: {
+		limit: Joi.number().min(1).max(25)
+	}
 }), new GetMessagesController().handle);
 
 router.get("/profile", EnsureAuthenticated, new ProfileUserController().handle);

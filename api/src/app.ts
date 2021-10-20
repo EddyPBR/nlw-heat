@@ -16,13 +16,13 @@ app.use(ErrorHandling);
 const serverHttp = http.createServer(app);
 
 const io = new Server(serverHttp, {
-  cors: {
-    origin: "*"
-  }
+	cors: {
+		origin: "*"
+	}
 });
 
 io.on("connection", socket => {
-  console.log(`User connected on socket ${socket.id}`);
+	console.log(`User connected on socket ${socket.id}`);
 });
 
 export { serverHttp, io };
