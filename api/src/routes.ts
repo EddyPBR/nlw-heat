@@ -5,8 +5,8 @@ import { EnsureAuthenticated } from "@middlewares/EnsureAuthenticated";
 
 import { AuthenticateUserController } from "@controllers/AuthenticateUserController";
 import { CreateMessageController } from "@controllers/CreateMessageController";
-import { GetLast3MessagesController } from "@controllers/GetLast3MessagesController";
 import { ProfileUserController } from "@controllers/ProfileUserController";
+import { GetMessagesController } from "@controllers/GetMessagesController";
 
 const router = Router();
 
@@ -34,7 +34,11 @@ router.post("/messages", celebrate({
   }
 }),EnsureAuthenticated, new CreateMessageController().handle);
 
-router.get("/messages/last3", new GetLast3MessagesController().handle);
+router.get("/messages", celebrate({
+  query: {
+    limit: Joi.number().min(1).max(25)
+  }
+}), new GetMessagesController().handle);
 
 router.get("/profile", EnsureAuthenticated, new ProfileUserController().handle);
 
