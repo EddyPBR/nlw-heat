@@ -1,0 +1,260 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-10-20T20:31:07.298Z",
+  "__export_source": "insomnia.desktop.app:v2021.4.1",
+  "resources": [
+    {
+      "_id": "req_2a2721a2d10949d0bc587d42c8561ece",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634749344006,
+      "created": 1634748404447,
+      "url": "{{ _.TEST_URL }}/messages?limit=3",
+      "name": "Get Messages",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1634748404447,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "parentId": null,
+      "modified": 1634666083237,
+      "created": 1634666083237,
+      "name": "nlw-heat",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_775a3c34c73e44bf94dcfb9350912c4d",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634737215511,
+      "created": 1634737209632,
+      "url": "{{ _.TEST_URL }}/github",
+      "name": "Github Authentication",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1634737209707,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_be61c4da8a6c4f22a77579429daac200",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634737606224,
+      "created": 1634737007880,
+      "url": "{{ _.TEST_URL }}/profile",
+      "name": "Profile User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.TOKEN }}"
+      },
+      "metaSortKey": -1634737007880,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3ec2c76027dd43b4bb364ae75a82d48e",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634737806432,
+      "created": 1634727914908,
+      "url": "{{ _.TEST_URL }}/messages",
+      "name": "Create Message",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"message\": \"diego: tah, ryan: vou implementar\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_8efa61003d7f40c0a3ca172e605e475f"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.TOKEN }}"
+      },
+      "metaSortKey": -1634727914909,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1b3024b9f3004bab9ebbd3231c04711e",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634747734992,
+      "created": 1634666171742,
+      "url": "{{ _.TEST_URL }}/authenticate",
+      "name": "Authenticate User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"code\": \"fbd139ce2c7f956304fe\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_82a8abfe91834a62acae38fa78ae3fe2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1634666171742,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_402e5d31447d0dc8d9e278d20dff377918e27ddc",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634737847485,
+      "created": 1634666083484,
+      "name": "Base Environment",
+      "data": {
+        "TEST_URL": "http://localhost:3333",
+        "TOKEN": "{% response 'body', 'req_1b3024b9f3004bab9ebbd3231c04711e', 'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "TEST_URL",
+          "TOKEN"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1634666083484,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_402e5d31447d0dc8d9e278d20dff377918e27ddc",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634737250080,
+      "created": 1634666083487,
+      "name": "Default Jar",
+      "cookies": [
+        {
+          "key": "_device_id",
+          "value": "1257954f627e4ac258bbda62d44463cb",
+          "expires": "2022-10-20T11:49:40.000Z",
+          "domain": "github.com",
+          "path": "/",
+          "secure": true,
+          "httpOnly": true,
+          "extensions": [
+            "SameSite=Lax"
+          ],
+          "hostOnly": true,
+          "creation": "2021-10-20T11:49:40.348Z",
+          "lastAccessed": "2021-10-20T11:49:40.348Z",
+          "id": "32922334536557285"
+        },
+        {
+          "key": "_octo",
+          "value": "GH1.1.2082616784.1634730580",
+          "expires": "2022-10-20T11:49:40.000Z",
+          "domain": "github.com",
+          "path": "/",
+          "secure": true,
+          "extensions": [
+            "SameSite=Lax"
+          ],
+          "hostOnly": false,
+          "creation": "2021-10-20T11:49:40.348Z",
+          "lastAccessed": "2021-10-20T11:49:40.348Z",
+          "id": "4273107919831707"
+        },
+        {
+          "key": "logged_in",
+          "value": "no",
+          "expires": "2022-10-20T11:49:40.000Z",
+          "domain": "github.com",
+          "path": "/",
+          "secure": true,
+          "httpOnly": true,
+          "extensions": [
+            "SameSite=Lax"
+          ],
+          "hostOnly": false,
+          "creation": "2021-10-20T11:49:40.349Z",
+          "lastAccessed": "2021-10-20T11:49:40.349Z",
+          "id": "8880327765178277"
+        },
+        {
+          "key": "_gh_sess",
+          "value": "iQXIf09asgHdjc1aV1kEtOwHg%2FMB4vtErVxQo7OxVredilvRNmcLLvln9G%2B%2FN95mj6S2miHsrc8HhNPs18Zc0ltp6wwp0lyhunvgQZQn5JecZtLxcitMwehBBQrG6xcct6SU5YmrZx%2BqWjo3RyTYAKBpjOzVXUr9xOkiYP5pR8XfEMe%2BgqDnJtUho%2FHqT5DiQsIKZtzAGDzAG2FufIL3jaPTYm0%2Bb37dbXqkQFs4yQZY84I2NlK9AN7WFQ0Lc1H9V1gQEuD7Ndoo65taqKFmcg%3D%3D--SffAa0m5gK6mEzWo--exvx729tUoYKyeaT793yXg%3D%3D",
+          "domain": "github.com",
+          "path": "/",
+          "secure": true,
+          "httpOnly": true,
+          "extensions": [
+            "SameSite=Lax"
+          ],
+          "hostOnly": true,
+          "creation": "2021-10-20T11:49:40.349Z",
+          "lastAccessed": "2021-10-20T13:40:50.080Z",
+          "id": "5685013680398032"
+        }
+      ],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_1c253e4497424810b5dc169fc893346e",
+      "parentId": "wrk_f4d3df91823e4c0a9db37a606fb3ce85",
+      "modified": 1634666083244,
+      "created": 1634666083244,
+      "fileName": "nlw-heat",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
