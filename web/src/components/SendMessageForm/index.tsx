@@ -6,8 +6,30 @@ import Image from "next/image";
 
 import { useAuth } from "@hooks/useAuth";
 
+import { useForm } from "react-hook-form";
+
+import { api } from "@services/api";
+
+interface IMessageFormInputs {
+  message: string;
+}
+
 export function SendMessageForm() {
   const { user } = useAuth();
+
+  const { register, handleSubmit, reset } = useForm<IMessageFormInputs>();
+
+  async function handleCreateMessage({ message }: IMessageFormInputs) {
+    try {
+      await api.post("messages", { 
+        message
+      });
+    } catch {
+      console.log("Error on create message");
+    } finally {
+      reset();
+    }
+  }
 
   return (
     <FormWrapper>
@@ -29,9 +51,12 @@ export function SendMessageForm() {
         </UserInfo>
       }
 
-      <MessageForm>
+      <MessageForm onSubmit={handleSubmit(handleCreateMessage)}>
         <label htmlFor="message">Mensagem</label>
         <textarea
+          {...register("message", { 
+            required: true
+          })}
           name="message"
           id="message"
           placeholder="Qual sua expecitativa para o evento?"
