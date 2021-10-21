@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "@contexts/AuthContext";
 
-export function useClientAuth() {
+export function useAuth() {
   const value = useContext(AuthContext);
   return value;
 }

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
+import { useRouter } from "next/router";
 import { api } from "@services/api";
 
 interface IAuthProvider {
@@ -35,6 +36,8 @@ export function AuthProvider({ children }: IAuthProvider) {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const router = useRouter();
+
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`;
 
   async function signIn(githubCode: string) {
@@ -48,6 +51,8 @@ export function AuthProvider({ children }: IAuthProvider) {
       const { token, user } = response.data;
 
       localStorage.setItem("@dowhile:token", token);
+
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
 
       setUser(user);
     } catch {
@@ -88,10 +93,10 @@ export function AuthProvider({ children }: IAuthProvider) {
     const url = window.location.href;
     const hasGithubCode = url.includes("?code=");
 
-    if (hasGithubCode) {
+    if(hasGithubCode) {
       const [urlWithoutGithub, githubCode] = url.split("?code=");
 
-      window.history.pushState({}, "", urlWithoutGithub);
+      router.replace(`?code=${githubCode}`, urlWithoutGithub, { shallow: true });
 
       signIn(githubCode);
     }
