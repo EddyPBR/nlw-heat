@@ -1,7 +1,16 @@
 import type { NextPage } from "next";
+import { ContentWrapper } from "@styles/global";
+
+import { MessageList } from "@components/MessageList";
+import { LoginBox } from "@components/LoginBox";
 
 const Home: NextPage = () => {
-	return <h1>Hello World</h1>;
+	return (
+		<ContentWrapper>
+			<MessageList />
+			<LoginBox />
+		</ContentWrapper>
+	)
 };
 
 export default Home;

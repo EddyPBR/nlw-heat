@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -40,4 +40,15 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 58.5939%;
     }
   }
+`;
+
+export const ContentWrapper = styled.main`
+  max-width: 120rem;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 45.3rem;
+  column-gap: 12rem;
+  position: relative;
 `;
