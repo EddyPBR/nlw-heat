@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Wrapper, List, Message, MessageUser, UserImage } from "./styles";
 import { api } from "@services/api";
 import io from "socket.io-client";
+import toast from "react-hot-toast";
 
 interface IMessage {
   id: string;
@@ -54,7 +55,7 @@ export function MessageList() {
 
         setMessages(messages);
       } catch {
-        console.log("Failed to get messages");
+        toast.error("Failed to get messages :( - please reload the page");
       }
     }
 

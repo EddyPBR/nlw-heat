@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import { useRouter } from "next/router";
 import { api } from "@services/api";
+import toast from "react-hot-toast";
 
 interface IAuthProvider {
   children: ReactNode;
@@ -55,8 +56,9 @@ export function AuthProvider({ children }: IAuthProvider) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
       setUser(user);
+      toast.success("Welcome!");
     } catch {
-      console.log("Failed to sign-in");
+      toast.error("Failed to sign-in :(");
     } finally {
       setIsLoading(false);
     }
@@ -69,7 +71,7 @@ export function AuthProvider({ children }: IAuthProvider) {
       const { data: user } = await api.get<IUser>("profile");
       setUser(user);
     } catch {
-      console.log("Failed to get user profile");
+      toast.error("Failed to get user profile");
     } finally {
       setIsLoading(false);
     }
@@ -78,6 +80,7 @@ export function AuthProvider({ children }: IAuthProvider) {
   function signOut() {
     setUser(null);
     localStorage.removeItem("@dowhile:token");
+    toast.error("goodbye :(");
   }
 
   useEffect(() => {

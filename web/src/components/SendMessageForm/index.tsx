@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 
 import { api } from "@services/api";
 
+import toast from "react-hot-toast";
+
 interface IMessageFormInputs {
   message: string;
 }
@@ -24,10 +26,10 @@ export function SendMessageForm() {
       await api.post("messages", { 
         message
       });
-    } catch {
-      console.log("Error on create message");
-    } finally {
+      toast.success("Comment created!");
       reset();
+    } catch {
+      console.error("Failed, please try again :(");
     }
   }
 
