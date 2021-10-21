@@ -1,7 +1,7 @@
 import { GlobalStyle } from "@styles/global";
 import { theme } from "@styles/theme";
 import type { AppProps } from "next/app";
-import { AuthProvider } from "@contexts/authContext";
+import { AuthProvider } from "@contexts/AuthContext";
 import { ThemeProvider } from "styled-components";
 
 function MyApp({ Component, pageProps }: AppProps) {

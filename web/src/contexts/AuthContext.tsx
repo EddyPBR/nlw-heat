@@ -30,7 +30,7 @@ interface IAuthResponse {
 
 export const AuthContext = createContext({} as IAuthContextData);
 
-export function AuthProvider(props: IAuthProvider) {
+export function AuthProvider({ children }: IAuthProvider) {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -97,7 +97,9 @@ export function AuthProvider(props: IAuthProvider) {
       signInUrl,
       isLoading
     }}>
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 }
+
+export const AuthConsumer = AuthContext.Consumer;
