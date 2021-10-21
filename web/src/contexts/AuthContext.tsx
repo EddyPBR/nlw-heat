@@ -15,6 +15,7 @@ interface IUser {
 interface IAuthContextData {
   user: IUser | null;
   signInUrl: string;
+  signOut: () => void;
   isLoading: boolean;
 }
 
@@ -69,6 +70,11 @@ export function AuthProvider({ children }: IAuthProvider) {
     }
   }
 
+  function signOut() {
+    setUser(null);
+    localStorage.removeItem("@dowhile:token");
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("@dowhile:token");
 
@@ -95,6 +101,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     <AuthContext.Provider value={{
       user,
       signInUrl,
+      signOut,
       isLoading
     }}>
       {children}
