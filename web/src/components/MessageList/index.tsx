@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { Wrapper, List, Message, MessageUser, UserImage } from "./styles";
 import { api } from "@services/api";
+import io from "socket.io-client";
 
 interface IMessage {
   id: string;
@@ -19,6 +20,28 @@ interface IResponseMessage {
 
 export function MessageList() {
   const [messages, setMessages] = useState<IMessage[]>([]);
+
+  const messagesQueue: IMessage[] = [];
+
+  const socket = io(process.env.NEXT_PUBLIC_API_URL || "");
+
+  socket.on("new_message", (newMessage: IMessage) => {
+    messagesQueue.push(newMessage);
+  });
+
+  useEffect(() => {
+    setInterval(() => {
+      if(messagesQueue.length > 0) {
+        setMessages(prevState => [
+          messagesQueue[0],
+          prevState[0],
+          prevState[1],
+        ].filter(Boolean));
+
+        messagesQueue.shift();
+      }
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     async function getMessages() {
@@ -43,8 +66,8 @@ export function MessageList() {
       <Image src="/assets/logo.svg" priority={true} alt="DoWhile 2021" width="280" height="28" />
 
       <List>
-        {messages.map(message => 
-          <Message key={message.id}>
+        {messages.map((message, index) => 
+          <Message key={index}>
             <p>{message.text}</p>
 
             <MessageUser>
