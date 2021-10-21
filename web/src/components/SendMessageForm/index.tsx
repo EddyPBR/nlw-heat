@@ -15,7 +15,7 @@ interface IMessageFormInputs {
 }
 
 export function SendMessageForm() {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   const { register, handleSubmit, reset } = useForm<IMessageFormInputs>();
 
@@ -33,7 +33,7 @@ export function SendMessageForm() {
 
   return (
     <FormWrapper>
-      <SignOutButton>
+      <SignOutButton onClick={signOut}>
         <VscSignOut size={32} />
       </SignOutButton>
 
