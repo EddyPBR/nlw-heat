@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -42,13 +42,29 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentWrapper = styled.main`
+interface IContentWrapperProps {
+  isSigned?: boolean;
+}
+
+export const ContentWrapper = styled.main<IContentWrapperProps>`
   max-width: 120rem;
   height: 100vh;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 1fr 45.3rem;
   column-gap: 12rem;
   position: relative;
+
+  &::before {
+    ${props => props.isSigned ? css`
+    content: '';
+    height: 100vh;
+    width: 42rem;
+    background: url("/assets/background.svg") no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: -20rem;
+    top: 0;
+  ` : null}
+  }
 `;

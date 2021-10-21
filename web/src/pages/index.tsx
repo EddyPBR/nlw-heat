@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 	const { isLoading, user } = useAuth();
 
 	return (
-		<ContentWrapper>
+		<ContentWrapper isSigned={!!user ? true : false}>
 			<MessageList />
 
 			{(isLoading || !user)
