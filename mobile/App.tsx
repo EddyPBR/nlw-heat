@@ -5,8 +5,9 @@ import {
   Roboto_700Bold
 } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import { theme } from "./src/styles/theme";
+import { StatusBar } from "expo-status-bar";
 
+import { theme } from "./src/styles/theme";
 import { ThemeProvider } from "styled-components";
 
 import { Home } from "./src/screens/Home";
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar style="light" />
       <Home />
     </ThemeProvider>
   );
