@@ -47,6 +47,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     try {
       const response = await api.post<IAuthResponse>("authenticate", {
         code: githubCode,
+        scope: "web"
       });
 
       const { token, user } = response.data;
