@@ -49,7 +49,11 @@ export function AuthProvider({ children }: IAuthProvider) {
       const authSessionResponse = await AuthSessions.startAsync({ authUrl }) as IAuthorizationResponse;
 
       if (authSessionResponse.type === "success" && authSessionResponse.params.error !== "access_denied") {
-        const authResponse = await api.post<IAuthResponse>("/authenticate", { code: authSessionResponse.params.code });
+        const authResponse = await api.post<IAuthResponse>("/authenticate", { 
+          code: authSessionResponse.params.code,
+          scope: "mobile"
+        });
+
         const { user, token } = authResponse.data;
 
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
