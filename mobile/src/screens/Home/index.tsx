@@ -1,11 +1,33 @@
 import React from "react";
 
-import { Container, ContentText } from "./styles";
+import { KeyboardAvoidingView, Platform } from "react-native";
 
-export function Home() {
+import { Container } from "./styles";
+
+import { Header } from "../../components/Header";
+import { MessagesList } from "../../components/MessagesList";
+import { SignInBox } from "../../components/SignInBox";
+import { SendMessageForm } from "../../components/SendMessageForm";
+
+import { useAuth } from "../../hooks/useAuth";
+
+export function Home() { 
+  const { user } = useAuth();
+
   return (
-    <Container>
-      <ContentText>Olá React Native</ContentText>
-    </Container>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined }
+    >
+      <Container>
+        <Header />
+        <MessagesList />
+        {
+          user
+          ? <SendMessageForm />
+          : <SignInBox />
+        }
+      </Container>
+    </KeyboardAvoidingView>
   )
 }
