@@ -2,6 +2,7 @@ import React, { createContext, ReactNode, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as AuthSessions from "expo-auth-session";
 import { api } from "../services/api";
+import { ToastAndroid } from "react-native";
 
 interface IAuthProvider {
   children: ReactNode;
@@ -57,8 +58,8 @@ export function AuthProvider({ children }: IAuthProvider) {
 
         setUser(user);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      ToastAndroid.show(err.message, ToastAndroid.SHORT);
     } finally {
       setIsLoading(false);
     }
@@ -66,8 +67,8 @@ export function AuthProvider({ children }: IAuthProvider) {
 
   async function signOut() {
     setUser(null);
-    await AsyncStorage.removeItem("@nlwheat:user")
-    await AsyncStorage.removeItem("@nlwheat:token")
+    await AsyncStorage.removeItem("@nlwheat:user");
+    await AsyncStorage.removeItem("@nlwheat:token");
   }
 
   useEffect(() => {
@@ -80,8 +81,8 @@ export function AuthProvider({ children }: IAuthProvider) {
           api.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(tokenStorage)}`;
           setUser(JSON.parse(userStorage));
         }
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        ToastAndroid.show(err.message, ToastAndroid.SHORT);
       } finally {
         setIsLoading(false);
       }
