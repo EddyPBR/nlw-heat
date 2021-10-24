@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
 	@media(max-width: 1070px) {
 		max-width: 46rem;
 		width: 100%;
+		margin: 4rem 0;
 	}
 `;
 
