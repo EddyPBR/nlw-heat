@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { ScrollContainer, ContentContainerStyleObject } from "./styles";
 
-import { Message } from "../Message";
+import { Message, IMessage } from "../Message";
 
-import { MESSAGES_EXAMPLE } from "../../utils/messages";
+import { api } from "../../services/api";
 
 export function MessagesList() {
+  const [messages, setMessages] = useState<IMessage[]>([]);
+
+  useEffect(() => {
+    async function getMessages() {
+      const { data: responseMessages } = await api.get<IMessage[]>("/messages?limit=3");
+      setMessages(responseMessages);
+    }
+
+    getMessages();
+  }, []);
+
   return (
     <ScrollContainer
       contentContainerStyle={ContentContainerStyleObject}
       keyboardShouldPersistTaps="never"
     >
       {
-        MESSAGES_EXAMPLE.map((message) => (
-          <Message key={message.id} message={message} />
+        messages.map((message, index) => (
+          <Message key={index} message={message} />
         ))
       }
     </ScrollContainer>
