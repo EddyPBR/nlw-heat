@@ -1,4 +1,4 @@
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import { ApplicationException } from "@exceptions/ApplicationException";
 import axios from "axios";
 import { Prisma } from "@prisma/client";
@@ -8,6 +8,7 @@ export function ErrorHandling (
 	err: Error,
 	request: Request,
 	response: Response,
+	next: NextFunction
 ) {
 	if (err instanceof ApplicationException) {
 		return response.status(err.statusCode).json({ message: err.message });
