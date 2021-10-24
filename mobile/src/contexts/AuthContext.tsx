@@ -58,7 +58,7 @@ export function AuthProvider({ children }: IAuthProvider) {
 
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         await AsyncStorage.setItem("@nlwheat:user", JSON.stringify(user));
-        await AsyncStorage.setItem("@nlwheat:token", JSON.stringify(token));
+        await AsyncStorage.setItem("@nlwheat:token", token);
 
         setUser(user);
       }
@@ -82,7 +82,7 @@ export function AuthProvider({ children }: IAuthProvider) {
         const tokenStorage = await AsyncStorage.getItem("@nlwheat:token");
 
         if (userStorage && tokenStorage) {
-          api.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(tokenStorage)}`;
+          api.defaults.headers.common['Authorization'] = `Bearer ${tokenStorage}`;
           setUser(JSON.parse(userStorage));
         }
       } catch (err: any) {
