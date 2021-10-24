@@ -7,6 +7,8 @@ import {
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 
+import { AuthProvider } from "./src/contexts/AuthContext";
+
 import { theme } from "./src/styles/theme";
 import { ThemeProvider } from "styled-components";
 
@@ -24,8 +26,14 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="light" />
-      <Home />
+      <StatusBar 
+        style="light" 
+        translucent 
+        backgroundColor="transparent"
+      />
+      <AuthProvider>
+        <Home />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
