@@ -19,6 +19,12 @@ export const Wrapper = styled.div`
 		font-size: 3.2rem;
 		line-height: 3.6rem;
 	}
+
+	@media(max-width: 1070px) {
+		height: auto;
+		padding: 56rem 0;
+		padding-bottom: 12rem;
+	}
 `;
 
 export const SignInButton = styled.a`

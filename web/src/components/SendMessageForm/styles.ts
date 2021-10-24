@@ -12,6 +12,11 @@ export const FormWrapper = styled.div`
 	text-align: center;
 
 	position: relative;
+
+	@media(max-width: 1070px) {
+		max-width: 46rem;
+		width: 100%;
+	}
 `;
 
 export const UserInfo = styled.header`

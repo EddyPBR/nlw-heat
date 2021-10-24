@@ -48,6 +48,7 @@ interface IContentWrapperProps {
 
 export const ContentWrapper = styled.main<IContentWrapperProps>`
   max-width: 120rem;
+  width: 90vw;
   height: 100vh;
   margin: 0 auto;
   display: grid;
@@ -57,14 +58,26 @@ export const ContentWrapper = styled.main<IContentWrapperProps>`
 
   &::before {
     ${props => props.isSigned ? css`
-    content: '';
-    height: 100vh;
-    width: 42rem;
-    background: url("/assets/background.svg") no-repeat;
-    background-size: cover;
-    position: absolute;
-    right: -20rem;
-    top: 0;
-  ` : null}
+      content: '';
+      height: 100vh;
+      width: 42rem;
+      background: url("/assets/background.svg") no-repeat;
+      background-size: cover;
+      position: absolute;
+      right: -20rem;
+      top: 0;
+    ` : null}
+
+    @media(max-width: 1070px) {
+      display: none;
+    }
+  }
+
+  @media(max-width: 1070px) {
+    display: flex;
+    flex-direction: ${props => props.isSigned ? "column" : "column-reverse"};
+    height: auto;
+    min-height: 100vh;
+    justify-content: space-around;
   }
 `;

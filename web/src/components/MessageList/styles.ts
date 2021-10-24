@@ -10,6 +10,11 @@ export const Wrapper = styled.div`
 	> div {
 		margin-top: 3.2rem !important;
 	}
+
+	@media(max-width: 1070px) {
+		justify-content: center;
+		align-items: center;
+	}
 `;
 
 export const List = styled.ul`
@@ -19,6 +24,14 @@ export const List = styled.ul`
 	justify-content: center;
 	gap: 4rem;
 	flex: 1;
+
+	@media(max-width: 1070px) {
+		margin: 8rem 0;
+		justify-content: flex-start;
+		width: 100%;
+		max-width: 48rem;
+		padding: 0 0.8rem;
+	}
 `;
 
 export const Message = styled.li`
@@ -26,6 +39,10 @@ export const Message = styled.li`
 
 	&:nth-child(2) {
 		margin-left: 8rem;
+
+		@media(max-width: 1070px) {
+			margin: 0;
+		}
 	}
 
 	> p {
