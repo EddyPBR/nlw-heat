@@ -44,7 +44,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     try {
       setIsLoading(true);
 
-      const authUrl = `https://github.com/login/oauth/authorization?client_id=${process.env.CLIENT_ID}&scope=read:user`;
+      const authUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&scope=read:user`;
       const authSessionResponse = await AuthSessions.startAsync({ authUrl }) as IAuthorizationResponse;
 
       if (authSessionResponse.type === "success" && authSessionResponse.params.error !== "access_denied") {
