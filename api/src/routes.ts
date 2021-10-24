@@ -24,7 +24,8 @@ router.get("/signin/callback", (request, response) => {
 
 router.post("/authenticate", celebrate({
 	body: {
-		code: Joi.string().required()
+		code: Joi.string().required(),
+		scope: Joi.string().valid("web", "mobile").required()
 	}
 }),new AuthenticateUserController().handle);
 
