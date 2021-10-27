@@ -39,7 +39,7 @@ export function AuthProvider({ children }: IAuthProvider) {
 
   const router = useRouter();
 
-  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`;
+  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=read:user`;
 
   async function signIn(githubCode: string) {
     setIsLoading(true);
@@ -72,6 +72,7 @@ export function AuthProvider({ children }: IAuthProvider) {
       const { data: user } = await api.get<IUser>("profile");
       setUser(user);
     } catch {
+      localStorage.removeItem("@dowhile:token");
       toast.error("Failed to get user profile");
     } finally {
       setIsLoading(false);
