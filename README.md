@@ -124,8 +124,9 @@ Para colocar o projeto para rodar, basta seguir o passo a passo fornecido logo a
 
 ## :question: Rotas existentes
 
-Para ver as rotas da API, basta acessar o arquivo `Insomnia` que se encontra na raiz deste projeto,
-você pode exportá-lo para utilizar no insomnia e começar a efetuar requisições para o server.
+Para ver as rotas da API, basta acessar o arquivo [Insomnia](https://github.com/EddyPBR/nlw-heat/blob/master/api/Insomnia_2021-10-20.json) 
+e importar-lo. Basta abrir o arquivo e copiar, então abra o Insomnia e o mesmo irá perguntar se você quer importar o conteúdo da sua área 
+de transferência. Caso não pergunte acesse [como-importar-arquivo-insomnia?](https://docs.insomnia.rest/insomnia/import-export-data).
 
 <br />
 
