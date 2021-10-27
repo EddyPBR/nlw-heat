@@ -73,9 +73,6 @@ basta seguir para o tópico "Colocando o projeto para rodar".
 - React-Native
 - Expo
 - Prisma
-- NextJS (milha extra)
-- Docker (milha extra)
-- Padronização de commits (milha extra)
 
 <br />
 
@@ -86,12 +83,16 @@ Foram adicionadas algumas funcionalidades extras e efeitos visuais para melhorar
 ainda mais intuítivo, lembrando que este projeto foi desenvolvido por mim utilizando o NEXTJS, 
 dentre as funcionalidades extras estão:
 
-- Toasts de avisos do sistemas usando o react-hot-toast
-- Utilização do banco MySQL com docker-compose
-- Variáveis ambiente para todo o projeto
-- Alteração na rota de listagem de comentários, agora é passado pela URL a quantidade de comentários que for desejada
-- Falta geração de páginas estáticas, melhorias no SEO, e PWA 
-
+- NextJS ao inves de react puro;
+- Container docker com mysql & nodejs;
+- Utilização do banco MySQL;
+- Commitlint + commitizen + husky (padronizando commits);
+- Styled components;
+- Toasts de avisos do sistemas usando o react-hot-toast;
+- Variáveis ambiente para todo o projeto;
+- Alteração na rota de listagem de comentários, agora é passado pela URL a quantidade de comentários que for desejada;
+- Tratamento de erros (capturando erros com middlewares) na API;
+- Tratamento de dados do request com Celebrate + Joi;
 
 <br />
 
