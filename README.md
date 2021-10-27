@@ -83,16 +83,16 @@ Foram adicionadas algumas funcionalidades extras e efeitos visuais para melhorar
 ainda mais intuítivo, lembrando que este projeto foi desenvolvido por mim utilizando o NEXTJS, 
 dentre as funcionalidades extras estão:
 
-- NextJS ao inves de react puro;
-- Container docker com mysql & nodejs;
-- Utilização do banco MySQL;
-- Commitlint + commitizen + husky (padronizando commits);
-- Styled components;
-- Toasts de avisos do sistemas usando o react-hot-toast;
-- Variáveis ambiente para todo o projeto;
-- Alteração na rota de listagem de comentários, agora é passado pela URL a quantidade de comentários que for desejada;
-- Tratamento de erros (capturando erros com middlewares) na API;
-- Tratamento de dados do request com Celebrate + Joi;
+- <b>NextJS</b> ao inves de react puro;
+- <b>Container docker</b> com mysql & nodejs;
+- Utilização do <b>banco-de-dados MySQL</b>;
+- <b>Commitlint + commitizen + husky</b> (padronizando commits);
+- <b>Styled components</b> melhorando experiência de desenvolvimento da estilização web & mobile;
+- Toasts de avisos do sistemas usando o <b>React Hot Toast</b>;
+- <b>Variáveis ambiente</b> para todo o projeto;
+- Alteração na <b>rota de listagem de comentários, agora é passado pela URL a quantidade de comentários que for desejada</b>;
+- <b>Tratamento de erros</b> (capturando erros com middlewares) na API;
+- Tratamento de dados do request com <b>Celebrate + Joi</b>;
 
 <br />
 
@@ -103,7 +103,7 @@ Para colocar o projeto para rodar, basta seguir o passo a passo fornecido logo a
 
 - 1º: Tenha o NODE e o DOCKER instalados na sua máquina;
 - 2º: Faça o download deste projeto;
-- 3º: Configure as variaveis de ambiente, para isso veja o tutorial em [variaveis-ambiente](https://github.com/EddyPBR/letmeask/tree/main/.github/variaveis-ambiente)
+- 3º: Configure as variaveis de ambiente, para isso veja o tutorial em [variaveis-ambiente](https://github.com/EddyPBR/nlw-heat/tree/main/.github/variaveis-ambiente)
 - 4º: No terminal, dentro do diretório da API execute os seguintes comandos:
   - `yarn`
   - `yarn build`
