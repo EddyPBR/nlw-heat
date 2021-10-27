@@ -47,6 +47,6 @@ export function ErrorHandling (
 	}
 
 	return response.status(500).json({
-		message: "Internal server error",
+		message: err?.message || "Internal server error",
 	});
 }

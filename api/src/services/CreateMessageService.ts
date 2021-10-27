@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/index";
+import prismaClient from "@database/index";
 
 import { io } from "../app";
 

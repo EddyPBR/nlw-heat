@@ -20,7 +20,7 @@
           "@exceptions": "./src/exceptions",
           "@middlewares": "./src/middlewares",
           "@services": "./src/services",
-          "@prisma": "./src/prisma"
+          "@database": "./src/database"
         }
       }
     ]

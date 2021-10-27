@@ -9,3 +9,5 @@ dockerfile
 *.yml
 *.lock
 *.config
+migrations/*
+schema.prisma
