@@ -46,7 +46,11 @@ export function ErrorHandling (
 		return response.status(400).json({ message: err?.message || "Unexpected error on database" });
 	}
 
+	if(err instanceof Prisma.PrismaClientInitializationError) {
+		return response.status(400).json({ message: "Error on database inicialization" });
+	}
+
 	return response.status(500).json({
-		message: err?.message || "Internal server error",
+		message: "Internal server error",
 	});
 }
