@@ -11,3 +11,4 @@ dockerfile
 *.config
 migrations/*
 schema.prisma
+Insomnia*

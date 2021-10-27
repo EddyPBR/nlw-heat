@@ -4,11 +4,14 @@ import axios from "axios";
 import { Prisma } from "@prisma/client";
 import { isCelebrateError } from "celebrate";
 
+
 export function ErrorHandling (
 	err: Error,
 	request: Request,
 	response: Response,
+	/*eslint-disable */
 	next: NextFunction
+	/*eslint-enable */
 ) {
 	if (err instanceof ApplicationException) {
 		return response.status(err.statusCode).json({ message: err.message });
