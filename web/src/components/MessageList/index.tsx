@@ -25,12 +25,14 @@ export function MessageList() {
 
 	const messagesQueue: IMessage[] = [];
 
-	const socket = io(process.env.NEXT_PUBLIC_API_URL || "");
+	useEffect(() => {
+		const socket = io(process.env.NEXT_PUBLIC_API_URL || "");
 
-	socket.on("new_message", (newMessage: IMessage) => {
-		messagesQueue.push(newMessage);
-	});
-
+		socket.on("new_message", (newMessage: IMessage) => {
+			messagesQueue.push(newMessage);
+		});
+	}, []);
+	
 	useEffect(() => {
 		setInterval(() => {
 			if (messagesQueue.length > 0) {
