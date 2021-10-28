@@ -2,7 +2,9 @@ version: '3.3'
 
 services:
   nlw-heat-app:
-    env_file: ./.env
+    env_file: ./.env.production
+    environment:
+      NODE_ENV: prod
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -17,7 +19,7 @@ services:
   nlw-heat-database:
     image: mysql
     restart: always
-    env_file: ./.env
+    env_file: ./.env.production
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE
