@@ -103,7 +103,7 @@ Para colocar o projeto para rodar, basta seguir o passo a passo fornecido logo a
 
 - 1º: Tenha o NODE e o DOCKER instalados na sua máquina;
 - 2º: Faça o download deste projeto;
-- 3º: Configure as variaveis de ambiente, para isso veja o tutorial em [variaveis-ambiente](https://github.com/EddyPBR/nlw-heat/tree/main/.github/variaveis-ambiente)
+- 3º: Configure as variaveis de ambiente, para isso veja o tutorial em [variaveis-ambiente](https://github.com/EddyPBR/nlw-heat/blob/master/.github/variaveis-ambiente.md)
 - 4º: No terminal, dentro do diretório da API execute os seguintes comandos:
   - `yarn`
   - `yarn build`

@@ -50,7 +50,7 @@ Agora é necessário criarmos as variaveis ambientes para o nosso projeto, siga 
 <br />
 
 - API:
-  - Na raiz do projeto crie um arquivo `.env` e copie as variaveis do arquivo `.env.example`;
+  - Na raiz do projeto crie um arquivo `.env`, copie as variaveis do arquivo `.env.example` para dentro do arquivo criado;
  
   - No campo <b>PORT</b>, será a port do seu servidor Ex.: `3333`;
  
@@ -65,6 +65,10 @@ Agora é necessário criarmos as variaveis ambientes para o nosso projeto, siga 
   - Nos campos <b>GITHUB_CLIENT_WEB_SECRET</b> & <b>GITHUB_CLIENT_MOBILE_SECRET</b>, é necessário acessar as chaves que foram criadas no tópico anterior, ir na sessão <b>Client secrets</b> e clicar no botão <b>Generate a new client secret</b>, copie a chave gerada e preencha os campos.
  
   - Nos campos <b>GITHUB_CLIENT_WEB_ID</b> & <b>GITHUB_CLIENT_MOBILE_ID</b>, é necessário acessar as chaves que foram criadas no tópico anterior, ir na sessão <b>Client ID</b> e copiar a hash que esta informada.
+
+  - Agora crie um arquivo `.env.production`, e copie todos os valores do arquivo `.env` para ele.
+
+  - O arquivo `.env.production` tem uma diferença, na variavel ambiente `DATABASE_URL` altere o valor <b>localhost</b> por <b>nlw-heat-database</b>. O motivo é que o host no docker será o nome do serviço do banco-de-dados criado no docker-compose.
 
 <br />
 
